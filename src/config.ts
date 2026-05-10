@@ -18,7 +18,7 @@ export function loadConfig(): Config {
       `Config file not found at ${CONFIG_PATH}.\n` +
         `Create it with at minimum:\n` +
         `{\n` +
-        `  "vaultPath": "~/path/to/your/obsidian/vault",\n` +
+        `  "vaultPath": "~/space/obsidian/raw/yt",\n` +
         `  "provider": "openai"\n` +
         `}`
     );

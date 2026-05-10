@@ -23,6 +23,7 @@
     "execa": "^9.6.1",
     "ollama": "^0.6.3",
     "openai": "^6.36.0",
+    "undici": "^8.2.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

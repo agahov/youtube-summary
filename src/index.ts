@@ -88,6 +88,9 @@ program
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       console.error(`\nError: ${message}`);
+      if (err instanceof Error && err.cause) {
+        console.error(`  Caused by: ${String(err.cause)}`);
+      }
       process.exit(1);
     }
   });

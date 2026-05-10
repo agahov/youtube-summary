@@ -59,7 +59,8 @@ export function createProvider(config: Config): AIProvider {
     case "ollama": {
       return new OllamaProvider(
         resolveSummarizerModel(config),
-        config.ollama?.baseUrl ?? "http://127.0.0.1:11434/v1"
+        config.ollama?.baseUrl ?? "http://127.0.0.1:11434",
+        config.ollama?.requestTimeout ?? 300_000,
       );
     }
   }

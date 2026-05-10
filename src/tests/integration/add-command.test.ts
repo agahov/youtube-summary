@@ -27,11 +27,12 @@ async function isOllamaAvailable(baseUrl: string): Promise<boolean> {
     return false;
   }
 }
-
-const VIDEO_URL = "https://www.youtube.com/watch?v=fFIjrtH6qjc";
+//https://www.youtube.com/watch?v=0TPq43Wpbz0
+const VIDEO_URL = "https://www.youtube.com/watch?v=RLX0S2PFams";
 const VIDEO_ID = new URL(VIDEO_URL).searchParams.get("v") || "";
 const OLLAMA_URL = "http://127.0.0.1:11434";
-const OLLAMA_MODEL = "qwen3-coder:30b";
+const OLLAMA_MODEL = "batiai/qwen3.6-27b:q4";
+//const OLLAMA_MODEL = "qwen3-coder:30b";
 const TEST_SUMMARIZER_MODEL = "gpt-4o-mini";
 
 const YT_DLP_OPTS: YtDlpOptions = {
@@ -127,7 +128,7 @@ describe("yt-summary add — integration (PIy1PCA0FZ0)", () => {
       );
 
       console.log(`  Calling ${OLLAMA_MODEL}...`);
-      const provider = new OllamaProvider(OLLAMA_MODEL, OLLAMA_URL);
+      const provider = new OllamaProvider(OLLAMA_MODEL, OLLAMA_URL, 600_000);
       const result = await provider.summarize(transcript ?? "", {
         title: metadata.title,
         channel: metadata.channel ?? metadata.uploader ?? "Unknown",
@@ -158,7 +159,7 @@ describe("yt-summary add — integration (PIy1PCA0FZ0)", () => {
       expect(content).toContain("## Key Points");
       expect(content).toContain("## Practical Takeaway");
       expect(content).toContain("## My Blunt Read");
-    });
+    }, 600_000);
   });
 
   // ── Case 4: writeNote logic tests (no yt-dlp or LLM required) ────────────
