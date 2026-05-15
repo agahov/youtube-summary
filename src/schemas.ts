@@ -13,7 +13,7 @@ export const AnthropicConfigSchema = z.object({
 export const OllamaConfigSchema = z.object({
   model: z.string().default("qwen3-coder:30b"),
   baseUrl: z.string().default("http://localhost:11434"),
-  requestTimeout: z.number().int().positive().default(300_000),
+  requestTimeout: z.number().int().positive().default(600_000),
 });
 
 export const ConfigSchema = z.object({

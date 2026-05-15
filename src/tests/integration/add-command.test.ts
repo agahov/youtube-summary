@@ -28,7 +28,8 @@ async function isOllamaAvailable(baseUrl: string): Promise<boolean> {
   }
 }
 //https://www.youtube.com/watch?v=0TPq43Wpbz0
-const VIDEO_URL = "https://www.youtube.com/watch?v=RLX0S2PFams";
+//https://www.youtube.com/watch?v=Lt2AxrtNaH0
+const VIDEO_URL = "https://www.youtube.com/watch?v=7AO4w4Y_L24";
 const VIDEO_ID = new URL(VIDEO_URL).searchParams.get("v") || "";
 const OLLAMA_URL = "http://127.0.0.1:11434";
 const OLLAMA_MODEL = "batiai/qwen3.6-27b:q4";

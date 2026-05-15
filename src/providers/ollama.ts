@@ -41,13 +41,19 @@ export class OllamaProvider implements AIProvider {
     });
 
     try {
-      const response = await client.chat({
+      const stream = await client.chat({
         model: this.model,
         messages: [{ role: "user", content: prompt }],
         options: { temperature: 0.3 },
+        stream: true,
       });
 
-      return parseStructuredResponse(response.message.content);
+      let content = "";
+      for await (const chunk of stream) {
+        content += chunk.message.content;
+      }
+
+      return parseStructuredResponse(content);
     } finally {
       clearTimeout(timer);
       void agent.destroy();
